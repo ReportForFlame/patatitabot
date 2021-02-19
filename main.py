@@ -66,7 +66,7 @@ timeout = 600.0 # Segundos del timer
 
 def timer():
     #do work here
-    await ctx.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
+    bot.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
 l = task.LoopingCall(timer)
 l.start(timeout) #Lo invocamos cada 600 segundos
