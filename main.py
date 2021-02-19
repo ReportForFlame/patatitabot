@@ -1,4 +1,8 @@
 from twitchio.ext import commands
+from twisted.internet import task
+from twisted.internet import reactor
+
+
 class Bot(commands.Bot):
     def __init__(self):
         nick = ""
@@ -37,7 +41,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Si queréis formar parte de una gran comunidad, uníos sin faltar https://discord.gg/VaHwkrX')
     @commands.command(name='loots')
     async def loots(self, ctx):
-        await ctx.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=Q1Q65')
+        await ctx.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
     @commands.command(name='twitter')
     async def twitter(self, ctx):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
@@ -55,6 +59,16 @@ class Bot(commands.Bot):
             comandos.append(command.name)
         await ctx.send(comandos)
 
-
 bot = Bot()
 bot.run()    
+
+timeout = 600.0 # Segundos del timer
+
+def timer():
+    #do work here
+    await ctx.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
+
+l = task.LoopingCall(timer)
+l.start(timeout) #Lo invocamos cada 600 segundos
+
+reactor.run()
