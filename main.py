@@ -27,9 +27,22 @@ class Bot(commands.Bot):
     async def event_message(self, message):
         print(message.content)
         await self.handle_commands(message)
+
     # Decorador para los comandos
     @commands.command(name='saludo')
     async def saludo(self, ctx):
         await ctx.send(f'Hola {ctx.author.name}!')
+    @commands.command(name='discord')
+    async def discord(self, ctx):
+        await ctx.send(f'Si queréis formar parte de una gran comunidad, uníos sin faltar https://discord.gg/VaHwkrX')
+    @commands.command(name='loots')
+    async def loots(self, ctx):
+        await ctx.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=Q1Q65')
+    @commands.command(name='twitter')
+    async def twitter(self, ctx):
+        await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
+
+
+
 bot = Bot()
 bot.run()    
