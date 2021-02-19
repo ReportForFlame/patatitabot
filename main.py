@@ -57,7 +57,7 @@ class Bot(commands.Bot):
         await ctx.send(commands) #Borrar, es para depurar
         comandos = []
         for command in self.commands:
-            comandos.append(command.name)
+            comandos.append(command)
         await ctx.send(comandos)
 
 bot = Bot()
