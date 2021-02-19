@@ -32,6 +32,9 @@ class Bot(commands.Bot):
         print(message.content)
         await self.handle_commands(message)
 
+        if 'hola' in message.content.lower():
+            await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
+
     # Decorador para los comandos
     @commands.command(name='saludo')
     async def saludo(self, ctx):
@@ -58,7 +61,7 @@ class Bot(commands.Bot):
         seperator = '\n'
         for command in self.commands:
             comandos.append(command)
-        await ctx.send(f'Comandos del stream:\n'+ seperator.join(comandos))
+        await ctx.send(f'Los comandos del stream son:\n'+ seperator.join(comandos))
         
 
 bot = Bot()
