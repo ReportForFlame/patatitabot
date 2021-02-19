@@ -23,7 +23,7 @@ class Bot(commands.Bot):
     async def event_ready(self):
         print(f'Listo! | {self.nick}')
         ws = self._ws 
-        await ws.send_privmsg(self.channel, f"/me has landed!")
+        await ws.send_privmsg(self.channel, f"¡/me ha aparecido!")
     async def event_message(self, message):
         print(message.content)
         await self.handle_commands(message)
@@ -31,3 +31,5 @@ class Bot(commands.Bot):
     @commands.command(name='saludo')
     async def saludo(self, ctx):
         await ctx.send(f'Hola {ctx.author.name}!')
+bot = Bot()
+bot.run()    
