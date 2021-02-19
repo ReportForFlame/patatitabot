@@ -43,13 +43,14 @@ class Bot(commands.Bot):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
-        await ctx.send(f'{ctx.author.name} le da un gran abrazo a {ctx.content}!')
+        user = ctx.content[9:]
+        await ctx.send(f'{ctx.author.name} le da un gran abrazo a {user}!')
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
     @commands.command(name='follow')
     async def follow(self, ctx):
-        await ctx.send(f'Patata: ', get_follow(ctx.author.name, self.channel))
+        await ctx.send(f'Patata: ', self.get_follow(ctx.author.name, self.channel))
     
 
 
