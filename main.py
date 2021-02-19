@@ -47,6 +47,10 @@ class Bot(commands.Bot):
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
+    @commands.command(name='follow')
+    async def follow(self, ctx):
+        await ctx.send(f'Patata: ', get_follow(ctx.author.name, self.channel))
+    
 
 
 
