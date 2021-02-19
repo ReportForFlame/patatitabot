@@ -43,7 +43,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
-        await ctx.send(f'$username le da un gran abrazo a $targetname !')
+        await ctx.send(f'{ctx.author.name} le da un gran abrazo a {ctx.raw_data}!')
 
 
 
