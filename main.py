@@ -31,3 +31,5 @@ class Bot(commands.Bot):
     @commands.command(name='saludo')
     async def saludo(self, ctx):
         await ctx.send(f'Hola {ctx.author.name}!')
+bot = Bot()
+bot.run()
