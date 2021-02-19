@@ -54,6 +54,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
     @commands.command(name='comandos')
     async def comandos(self, ctx):
+        await ctx.send(commands) #Borrar, es para depurar
         comandos = []
         for command in self.commands:
             comandos.append(command.name)
