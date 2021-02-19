@@ -51,8 +51,8 @@ class Bot(commands.Bot):
     @commands.command(name='comandos')
     async def comandos(self, ctx):
         comandos = []
-        for command.name in self.commands:
-            comandos = comandos + str(command.name)
+        for command in self.commands:
+            comandos = comandos + list(command.name)
         await ctx.send(comandos)
     
     
