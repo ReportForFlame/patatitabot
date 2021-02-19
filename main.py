@@ -55,10 +55,10 @@ class Bot(commands.Bot):
     @commands.command(name='comandos')
     async def comandos(self, ctx):
         comandos = []
-        seperator = ' '
+        seperator = '\n'
         for command in self.commands:
             comandos.append(command)
-        await ctx.send(f'', seperator.join(comandos))
+        await ctx.send(f'Comandos del stream:\n'+ seperator.join(comandos))
         
 
 bot = Bot()
