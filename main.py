@@ -36,11 +36,11 @@ class Bot(commands.Bot):
         if 'hola' in message.content.lower():
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
 
-    timeout = 10.0 # Segundos del timer
+    timeout = 30.0 # Segundos del timer
 
-    def timer(self):
+    async def timer(self):
         #do work here
-        self.channel.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
+        await self.channel.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
     l = task.LoopingCall(timer)
     l.start(timeout) #Lo invocamos cada 600 segundos
