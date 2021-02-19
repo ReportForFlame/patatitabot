@@ -57,7 +57,7 @@ class Bot(commands.Bot):
         comandos = []
         for command in self.commands:
             comandos.append(command)
-        await ctx.send(comandos)
+        await ctx.send(comandos.tostring())
 
 bot = Bot()
 bot.run()    
