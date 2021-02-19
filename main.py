@@ -65,7 +65,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Los comandos del stream son:\n'+ seperator.join(comandos))
         
 
-  
+bot = Bot()
 
 timeout = 10.0 # Segundos del timer
 
@@ -78,5 +78,5 @@ l.start(timeout) #Lo invocamos cada 600 segundos
 
 reactor.run()
 
-bot = Bot()
+
 bot.run()  
