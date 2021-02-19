@@ -43,7 +43,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
-        await ctx.send(f'{ctx.author.name} le da un gran abrazo a {ctx.message}!')
+        await ctx.send(f'{ctx.author.name} le da un gran abrazo a {ctx.content}!')
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
