@@ -1,6 +1,7 @@
 from twitchio.ext import commands
 from twisted.internet import task
 from twisted.internet import reactor
+import re
 
 
 class Bot(commands.Bot):
@@ -64,8 +65,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Los comandos del stream son:\n'+ seperator.join(comandos))
         
 
-bot = Bot()
-bot.run()    
+  
 
 timeout = 10.0 # Segundos del timer
 
@@ -77,3 +77,6 @@ l = task.LoopingCall(timer)
 l.start(timeout) #Lo invocamos cada 600 segundos
 
 reactor.run()
+
+bot = Bot()
+bot.run()  
