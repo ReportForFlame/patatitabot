@@ -5,7 +5,7 @@ import re
 
 
 #compilarPatrones():
-patron1 = re.compile('[Hh]o+la+.*')
+patron1 = re.compile('ho+la+.*')
 
 class Bot(commands.Bot):
     def __init__(self):
