@@ -40,7 +40,13 @@ class Bot(commands.Bot):
         if patron1.search(message.content.lower()):
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
         elif patron2.search(message.content.lower()):
-            await message.channel.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
+            await message.channel.send(f'¿He leido cofre? Puedes conseguir un cofre gratis de la colección de @ReportForFlame en Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
+    
+    dic = {'discord' : '', 'loots' : '', 'twitter': '', 'abrazar' : '', 'verse' : '', 'comandos' : ''}
+    '''async def delay(self, message, comando):
+        fecha = dic.pop(comando)
+        if fecha + <= message.timestamp'''
+        
 
     '''timeout = 30.0 # Segundos del timer
 
@@ -66,7 +72,8 @@ class Bot(commands.Bot):
     
     @commands.command(name='twitter')
     async def twitter(self, ctx):
-        await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
+        await ctx.send(message.timestamp)
+        #await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
     
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
@@ -90,5 +97,6 @@ class Bot(commands.Bot):
         await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
         
 
+#Ejecutar bot
 bot = Bot()
 bot.run()  
