@@ -5,7 +5,7 @@ import re
 
 
 #compilarPatrones():
-patron1 = re.compile('.*ho+la+.*')
+patron1 = re.compile('.*[Hh][Oo]+[Ll][Aa]+.*')
 
 class Bot(commands.Bot):
     def __init__(self):
@@ -58,9 +58,6 @@ class Bot(commands.Bot):
 
 
     # Decorador para los comandos
-    @commands.command(name='saludo')
-    async def saludo(self, ctx):
-        await ctx.send(f'Hola {ctx.author.name}!')
     @commands.command(name='discord')
     async def discord(self, ctx):
         await ctx.send(f'Si queréis formar parte de una gran comunidad, uníos sin faltar https://discord.gg/VaHwkrX')
