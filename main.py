@@ -5,7 +5,7 @@ import re
 
 
 #compilarPatrones():
-patron1 = re.compile('ho+la+.*')
+patron1 = re.compile('.*ho+la+.*')
 
 class Bot(commands.Bot):
     def __init__(self):
@@ -76,7 +76,7 @@ class Bot(commands.Bot):
             user = ctx.content[9:]
             await ctx.send(f'{ctx.author.name} le da un gran abrazo a {user}!')
         else:
-            await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionandolo después del comando.')
+            await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
