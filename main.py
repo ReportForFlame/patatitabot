@@ -40,7 +40,7 @@ class Bot(commands.Bot):
         if patron1.search(message.content.lower()):
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
         elif patron2.search(message.content.lower()):
-            await message.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
+            await message.channel.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
     '''timeout = 30.0 # Segundos del timer
 
