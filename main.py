@@ -4,13 +4,13 @@ from twisted.internet import reactor
 import re
 
 
-#compilarPatrones():
+#compilarPatrones
 patron1 = re.compile('(?i)ho+la+')
-
+patron2 = re.compile('(?i)co+fre+s')
+ 
+#Clase Bot
 class Bot(commands.Bot):
     def __init__(self):
-        nick = ""
-        chanel = ""
         with open("config.secret","r") as fp:
             lines = fp.readlines()
             config = {}
@@ -37,12 +37,10 @@ class Bot(commands.Bot):
         print(message.content)
         await self.handle_commands(message)
 
-        '''if 'hola' in message.content.lower():
-            await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")'''
-
         if patron1.search(message.content.lower()):
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
-            
+        elif patron2.search(message.content.lower()):
+            self.loots(message)
 
     '''timeout = 30.0 # Segundos del timer
 
@@ -61,12 +59,15 @@ class Bot(commands.Bot):
     @commands.command(name='discord')
     async def discord(self, ctx):
         await ctx.send(f'Si queréis formar parte de una gran comunidad, uníos sin faltar https://discord.gg/VaHwkrX')
+    
     @commands.command(name='loots')
     async def loots(self, ctx):
         await ctx.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
+    
     @commands.command(name='twitter')
     async def twitter(self, ctx):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
+    
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
         if len(ctx.content) >=9:
@@ -74,9 +75,11 @@ class Bot(commands.Bot):
             await ctx.send(f'{ctx.author.name} le da un gran abrazo a {user}!')
         else:
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
+    
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
+    
     @commands.command(name='comandos')
     async def comandos(self, ctx):
         comandos = []
