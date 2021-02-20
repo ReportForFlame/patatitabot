@@ -37,11 +37,11 @@ class Bot(commands.Bot):
         print(message.content)
         await self.handle_commands(message)
 
-        if 'hola' in message.content.lower():
-            await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
-
-        '''if patron1.match(message.content.lower()):
+        '''if 'hola' in message.content.lower():
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")'''
+
+        if patron1.match(message.content.lower()):
+            await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
             
 
     '''timeout = 30.0 # Segundos del timer
