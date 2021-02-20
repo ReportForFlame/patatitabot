@@ -5,7 +5,7 @@ import re
 
 
 #compilarPatrones():
-patron1 = re.compile('.*[Hh][Oo]+[Ll][Aa]+.*')
+patron1 = re.compile('(?i)ho+la+')
 
 class Bot(commands.Bot):
     def __init__(self):
@@ -40,7 +40,7 @@ class Bot(commands.Bot):
         '''if 'hola' in message.content.lower():
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")'''
 
-        if patron1.match(message.content.lower()):
+        if patron1.search(message.content.lower()):
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
             
 
