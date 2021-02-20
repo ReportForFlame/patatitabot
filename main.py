@@ -36,7 +36,7 @@ class Bot(commands.Bot):
         if 'hola' in message.content.lower():
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
 
-    timeout = 30.0 # Segundos del timer
+    '''timeout = 30.0 # Segundos del timer
 
     async def timer(self):
         #do work here
@@ -45,7 +45,7 @@ class Bot(commands.Bot):
     l = task.LoopingCall(timer)
     l.start(timeout) #Lo invocamos cada 600 segundos
 
-    reactor.run()
+    reactor.run()'''
 
 
 
@@ -75,7 +75,7 @@ class Bot(commands.Bot):
         seperator = '\n'
         for command in self.commands:
             comandos.append(command)
-        await ctx.send(f'Los comandos del stream son:\n'+ seperator.join(comandos))
+        await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
         
 
 bot = Bot()
