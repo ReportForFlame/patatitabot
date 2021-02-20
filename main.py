@@ -29,6 +29,7 @@ class Bot(commands.Bot):
         print(f'Listo! | {self.nick}')
         ws = self._ws 
         await ws.send_privmsg(self.channel, f"/me ha aparecido!")
+
     async def event_message(self, message):
         print(message.content)
         await self.handle_commands(message)
@@ -72,7 +73,7 @@ class Bot(commands.Bot):
     @commands.command(name='comandos')
     async def comandos(self, ctx):
         comandos = []
-        seperator = '\n'
+        seperator = ", "
         for command in self.commands:
             comandos.append(command)
         await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
