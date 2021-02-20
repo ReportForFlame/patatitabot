@@ -72,7 +72,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
-        if len(ctx.content) >=10:
+        if len(ctx.content) >=9:
             user = ctx.content[9:]
             await ctx.send(f'{ctx.author.name} le da un gran abrazo a {user}!')
         else:
