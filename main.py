@@ -4,6 +4,9 @@ from twisted.internet import reactor
 import re
 
 
+#compilarPatrones():
+patron1 = re.compile('[Hh]o+la+.*')
+
 class Bot(commands.Bot):
     def __init__(self):
         nick = ""
@@ -34,8 +37,12 @@ class Bot(commands.Bot):
         print(message.content)
         await self.handle_commands(message)
 
-        if 'hola' in message.content.lower():
+        '''if 'hola' in message.content.lower():
+            await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")'''
+
+        if patron1.match(message.content.lower()):
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
+            
 
     '''timeout = 30.0 # Segundos del timer
 
@@ -72,10 +79,10 @@ class Bot(commands.Bot):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
     @commands.command(name='comandos')
     async def comandos(self, ctx):
-        comandos = ['!']
-        seperator = ", !"
+        comandos = []
+        seperator = ", "
         for command in self.commands:
-            if comandos != "comandos":
+            if comandos != 'comandos':
                 comandos.append(command)
         await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
         
