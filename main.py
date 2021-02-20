@@ -72,10 +72,11 @@ class Bot(commands.Bot):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
     @commands.command(name='comandos')
     async def comandos(self, ctx):
-        comandos = []
-        seperator = ", "
+        comandos = ['!']
+        seperator = ", !"
         for command in self.commands:
-            comandos.append(command)
+            if comandos != "comandos":
+                comandos.append(command)
         await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
         
 
