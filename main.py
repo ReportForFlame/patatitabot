@@ -82,7 +82,7 @@ class Bot(commands.Bot):
         comandos = []
         seperator = ", "
         for command in self.commands:
-            if comandos != 'comandos':
+            if command != 'comandos':
                 comandos.append(command)
         await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
         
