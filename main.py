@@ -72,7 +72,7 @@ class Bot(commands.Bot):
     
     @commands.command(name='twitter')
     async def twitter(self, ctx):
-        await ctx.send(message.timestamp)
+        await ctx.send(ctx.timestamp)
         #await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
     
     @commands.command(name='abrazar')
