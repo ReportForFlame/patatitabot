@@ -61,7 +61,8 @@ class Bot(commands.Bot):
     reactor.run()'''
     def timer(self):
         self.channel.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
-
+    t = threading.Timer(10.0, timer)
+    t.start()
 
     # Decorador para los comandos
     @commands.command(name='discord')
@@ -101,7 +102,4 @@ class Bot(commands.Bot):
 
 #Ejecutar bot
 bot = Bot()
-t = threading.Timer(10.0, bot.timer)
-
 bot.run()  
-t.start()
