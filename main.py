@@ -49,16 +49,7 @@ class Bot(commands.Bot):
         if fecha + <= message.timestamp'''
         
 
-    timeout = 30.0 # Segundos del timer
-
-    def timer(self):
-        #do work here
-        self.channel.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
-
-    l = task.LoopingCall(timer)
-    l.start(timeout) #Lo invocamos cada 600 segundos
-
-    reactor.run()
+    
 
 
 
@@ -97,6 +88,16 @@ class Bot(commands.Bot):
                 comandos.append(command)
         await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
         
+timeout = 10.0 # Segundos del timer
+
+def timer():
+    #do work here
+    bot.channel.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
+
+l = task.LoopingCall(timer)
+l.start(timeout) #Lo invocamos cada 600 segundos
+
+reactor.run()
 
 #Ejecutar bot
 bot = Bot()
