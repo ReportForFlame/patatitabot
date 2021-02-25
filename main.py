@@ -101,6 +101,7 @@ class Bot(commands.Bot):
 
 #Ejecutar bot
 bot = Bot()
-t = threading.Timer(3.0, bot.timer)
-t.start()
+t = threading.Timer(10.0, bot.timer)
+
 bot.run()  
+t.start()
