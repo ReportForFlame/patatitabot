@@ -84,8 +84,8 @@ class Bot(commands.Bot):
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
     
     @commands.command(name='add')
-    async def add(self, ctx):
-        await ctx.command(f'/commercial 60')
+    async def add(self, channel):
+        self.message(channel, f".clear")
 
     @commands.command(name='verse')
     async def verse(self, ctx):
