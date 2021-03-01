@@ -88,6 +88,10 @@ class Bot(commands.Bot):
         else:
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
     
+    @commands.command(name='add')
+    async def verse(self, ctx):
+        await ctx.send(f'/commercial 60')
+
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
