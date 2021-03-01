@@ -90,7 +90,7 @@ class Bot(commands.Bot):
     
     @commands.command(name='add')
     async def add(self, ctx):
-        await ctx.send(f'/commercial 60')
+        await ctx.send(f'.commercial 60')
 
     @commands.command(name='verse')
     async def verse(self, ctx):
