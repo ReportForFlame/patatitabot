@@ -86,7 +86,7 @@ class Bot(commands.Bot):
     @commands.command(name='add')
     async def add(self, ctx):
         ws = self._ws 
-        await ws.send_privmsg(self.channel, f"/commercial 60")
+        await ws.send_privmsg(self.channel, f".commercial 60")
 
     @commands.command(name='verse')
     async def verse(self, ctx):
