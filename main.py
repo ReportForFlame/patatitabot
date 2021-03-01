@@ -84,14 +84,14 @@ class Bot(commands.Bot):
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
     
     @commands.command(name='add')
-    async def add(self, channel):
-        self.message(channel, f".clear")
+    async def add(self, ctx):
+        #await self.message(channel, f".clear")
 
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
     
-    @commands.command(name='comandos')
+    @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):
         comandos = []
         seperator = ", "
