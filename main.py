@@ -83,9 +83,9 @@ class Bot(commands.Bot):
         else:
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
     
-    @commands.command(name='add')
+    '''@commands.command(name='add')
     async def add(self, ctx):
-        #await self.message(channel, f".clear")
+        await self.message(channel, f".clear")'''
 
     @commands.command(name='verse')
     async def verse(self, ctx):
