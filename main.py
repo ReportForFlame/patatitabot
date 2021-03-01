@@ -89,7 +89,7 @@ class Bot(commands.Bot):
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
     
     @commands.command(name='add')
-    async def verse(self, ctx):
+    async def add(self, ctx):
         await ctx.send(f'/commercial 60')
 
     @commands.command(name='verse')
