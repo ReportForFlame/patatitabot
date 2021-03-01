@@ -39,7 +39,7 @@ class Bot(commands.Bot):
 
         if patron1.search(message.content.lower()):
             await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
-            await message.channel.send(f"/commercial 60")
+            await message.channel.send(/commercial 60)
         elif patron2.search(message.content.lower()):
             await message.channel.send(f'¿He leido cofre? Puedes conseguir un cofre gratis de la colección de @ReportForFlame en Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
     
