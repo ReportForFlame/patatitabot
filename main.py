@@ -85,7 +85,7 @@ class Bot(commands.Bot):
     
     @commands.command(name='add')
     async def add(self, ctx):
-        await ctx(self.channel, f'/mods')
+        await ctx.command(f'/commercial 60')
 
     @commands.command(name='verse')
     async def verse(self, ctx):
