@@ -2,11 +2,17 @@ from twitchio.ext import commands
 import threading
 import time
 import re
+import asyncio
+from datetime import datetime
+from random import choice
+from twitchtools import sendCommercial
 
 
 #compilarPatrones
 patron1 = re.compile('(?i)ho+la+')
 patron2 = re.compile('(?i)co+fre+s*')
+ADMIN = 'reportforflame'
+MODS = ('darkor12', 'betterkrau')
  
 #Clase Bot
 class Bot(commands.Bot):
@@ -26,6 +32,11 @@ class Bot(commands.Bot):
             )
         self.nick = config['BOT_NICK']
         self.channel = config['CHANNEL']
+        self.lastPredictedDate = datetime.now()
+        self.lastHelloDate = datetime.now()
+        self.lastInstaDate = datetime.now()
+        self.lastTwitterDate = datetime.now()
+        self.live = False
             
     
     async def event_ready(self):
@@ -33,33 +44,55 @@ class Bot(commands.Bot):
         ws = self._ws 
         await ws.send_privmsg(self.channel, f"/me ha aparecido!")
 
+    def isPredictAvailable(self, type=0):
+        timeNow = datetime.now()
+        if type == 0:
+            seconds = (timeNow - self.lastPredictedDate).total_seconds()
+            available = seconds >= 60 * 5
+            if available:
+                self.lastPredictedDate = timeNow
+        elif type == 1:
+            seconds = (timeNow - self.lastHelloDate).total_seconds()
+            available = seconds >= 20
+            if available:
+                self.lastHelloDate = timeNow
+        elif type == 2:
+            seconds = (timeNow - self.lastInstaDate).total_seconds()
+            available = seconds >= 120
+            if available:
+                self.lastInstaDate = timeNow
+        elif type == 3:
+            seconds = (timeNow - self.lastTwitterDate).total_seconds()
+            available = seconds >= 120
+            if available:
+                self.lastTwitterDate = timeNow
+        return available
+
     async def event_message(self, message):
         print(message.content)
-        await self.handle_commands(message)
 
-        if patron1.search(message.content.lower()):
-            await message.channel.send(f"¡Hola @{message.author.name}, bienvenido/a al stream!")
-            await message.channel.send(f'.commercial 60')
-        elif patron2.search(message.content.lower()):
+        if patron1.search(message.content.lower()) and self.isPredictAvailable():
+            if message.author.is_subscriber:
+                hello = f'Holaaa @{message.author.name}! 💜💜💜'
+            else:
+                hello = choice((
+                    f'Hola @{message.author.name}!',
+                    f'Hola @{message.author.name}! ❤️',
+                    f'Hola @{message.author.name}! 😊'
+                ))
+            await message.channel.send(hello)
+            
+        elif patron2.search(message.content.lower()) and self.isPredictAvailable(1):
             await message.channel.send(f'¿He leido cofre? Puedes conseguir un cofre gratis de la colección de @ReportForFlame en Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
-    
-    dic = {'discord' : '', 'loots' : '', 'twitter': '', 'abrazar' : '', 'verse' : '', 'comandos' : ''}
-    
-    '''def delay(self, message, comando):
-        fecha = dic.pop(comando)
-        if fecha + <= message.timestamp'''
         
+        if ('insta' in message.content.lower() or 'instagram' in message.content.lower()) and self.isPredictAvailable(2):
+            await ctx.send('Sigue a @ReportForFlame en Instagram! ❤️')
+            return
+        if ('twitter' in message.content.lower() or 'tweet' in message.content.lower()) and self.isPredictAvailable(3):
+            await ctx.send('Sigue a @CrazyAnnieTMI en Twitter! 🐥')
+            return
 
-    '''timeout = 30.0 # Segundos del timer
-
-    def timer(self):
-        #do work here
-        self.channel.send(f'Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi\nTambién puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26')
-
-    l = task.LoopingCall(timer)
-    l.start(timeout) #Lo invocamos cada 600 segundos
-
-    reactor.run()'''
+        await self.handle_commands(message)
     
 
     # Decorador para los comandos
@@ -74,6 +107,55 @@ class Bot(commands.Bot):
     @commands.command(name='twitter')
     async def twitter(self, ctx):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
+
+    @commands.command(name='ig', aliases=['instagram'])
+    async def ig(self, ctx):
+        await ctx.send('Sigue a @ReportForFlame en Instagram! ❤️')
+
+    @commands.command(name='sw', aliases=['switch', 'nintendo'])
+    async def switch(self, ctx):
+        await ctx.send('Agrégame en Nintendo Switch: SW-3824-4222-4328 🎮')
+
+
+    @commands.command(name='platanomelon', aliases=['pm', 'platano', 'melon'])
+    async def platanomelon(self, ctx):
+        await ctx.send(
+            'Obtén 5€ de descuento en tu primer pedido de al menos '
+            '50€ en Platanomelón utilizando este enlace '
+            'https://prz.io/mvgoP1u8 🍌🍈')
+
+    @commands.command(name='letyshops', aliases=['lety', 'cashback'])
+    async def letyshops(self, ctx):
+        await ctx.send(
+            'Gana 5€ al registrarte en Letyshops con este enlace y realizar '
+            'una compra de al menos 20€ '
+            'https://letyshops.com/es/winwin?ww=12937023 🛒🛍')
+
+    @commands.command(name='startstream')
+    async def startstream(self, ctx):
+        if ctx.author.name.lower() != ADMIN and self.live: return
+        await ctx.send('He iniciado las tareas programadas ✅')
+        self.live = True
+        while self.live:
+            await asyncio.sleep(60 * 15)
+            if not self.live: break
+            await ctx.send(f'Puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26 de StreamLoots! 🎁')
+            await ctx.send('Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi 💜 ^^')
+            await asyncio.sleep(60 * 15)
+            if not self.live: break
+            await ctx.send(f'Puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26 de StreamLoots! 🎁')
+            await ctx.send('Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi 💜 ^^')
+            addTime = choice((30, 30, 60))
+            sendCommercial(addTime)
+
+    @commands.command(name='endstream', aliases=['stopstream'])
+    async def endstream(self, ctx):
+        if ctx.author.name.lower() != ADMIN: return
+        self.live = False
+        await ctx.send('He desactivado las tareas programadas ✅')
+        global TRACKER_ENABLED
+        TRACKER_ENABLED = False
+
     
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
@@ -85,8 +167,13 @@ class Bot(commands.Bot):
     
     @commands.command(name='add')
     async def add(self, ctx):
-        ws = self._ws 
-        await ws.send_privmsg(self.channel, f".commercial 60")
+        if ctx.author.name.lower() != ADMIN: return
+        if len(ctx.content) >=5:
+            time = ctx.content[5:]
+            sendCommercial(int(time))
+        else:
+            sendCommercial(30)
+        
 
     @commands.command(name='verse')
     async def verse(self, ctx):
