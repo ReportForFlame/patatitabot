@@ -13,7 +13,7 @@ patron1 = re.compile('(?i)ho+la+')
 patron2 = re.compile('(?i)co+fre+s*')
 ADMIN = 'reportforflame'
 MODS = ('darkor12', 'betterkrau')
- 
+
 #Clase Bot
 class Bot(commands.Bot):
     def __init__(self):
@@ -37,18 +37,18 @@ class Bot(commands.Bot):
         self.lastInstaDate = datetime.now()
         self.lastTwitterDate = datetime.now()
         self.live = False
-            
-    
+
+
     async def event_ready(self):
         print(f'Listo! | {self.nick}')
-        ws = self._ws 
+        ws = self._ws
         await ws.send_privmsg(self.channel, f"/me ha aparecido!")
 
     def isPredictAvailable(self, type=0):
         timeNow = datetime.now()
         if type == 0:
             seconds = (timeNow - self.lastPredictedDate).total_seconds()
-            available = seconds >= 60 * 5
+            available = seconds >= 60
             if available:
                 self.lastPredictedDate = timeNow
         elif type == 1:
@@ -81,10 +81,10 @@ class Bot(commands.Bot):
                     f'Hola @{message.author.name}! 😊'
                 ))
             await message.channel.send(hello)
-            
+
         elif patron2.search(message.content.lower()) and self.isPredictAvailable(1):
             await message.channel.send(f'¿He leido cofre? Puedes conseguir un cofre gratis de la colección de @ReportForFlame en Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
-        
+
         if ('insta' in message.content.lower() or 'instagram' in message.content.lower()) and self.isPredictAvailable(2):
             await ctx.send('Sigue a @ReportForFlame en Instagram! ❤️')
             return
@@ -93,17 +93,17 @@ class Bot(commands.Bot):
             return
 
         await self.handle_commands(message)
-    
+
 
     # Decorador para los comandos
     @commands.command(name='discord')
     async def discord(self, ctx):
         await ctx.send(f'Si queréis formar parte de una gran comunidad, uníos sin faltar https://discord.gg/VaHwkrX')
-    
+
     @commands.command(name='loots')
     async def loots(self, ctx):
         await ctx.send(f'Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
-    
+
     @commands.command(name='twitter')
     async def twitter(self, ctx):
         await ctx.send(f'Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
@@ -156,7 +156,7 @@ class Bot(commands.Bot):
         global TRACKER_ENABLED
         TRACKER_ENABLED = False
 
-    
+
     @commands.command(name='abrazar')
     async def abrazar(self, ctx):
         if len(ctx.content) >=9:
@@ -164,7 +164,7 @@ class Bot(commands.Bot):
             await ctx.send(f'{ctx.author.name} le da un gran abrazo a {user}!')
         else:
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
-    
+
     @commands.command(name='add')
     async def add(self, ctx):
         if ctx.author.name.lower() != ADMIN: return
@@ -173,12 +173,12 @@ class Bot(commands.Bot):
             sendCommercial(int(time))
         else:
             sendCommercial(30)
-        
+
 
     @commands.command(name='verse')
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
-    
+
     @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):
         comandos = []
@@ -187,8 +187,8 @@ class Bot(commands.Bot):
             if command != 'comandos':
                 comandos.append(command)
         await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
-        
+
 
 #Ejecutar bot
 bot = Bot()
-bot.run()  
+bot.run()
