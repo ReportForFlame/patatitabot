@@ -86,10 +86,10 @@ class Bot(commands.Bot):
             await message.channel.send(f'¿He leido cofre? Puedes conseguir un cofre gratis de la colección de @ReportForFlame en Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
         if ('insta' in message.content.lower() or 'instagram' in message.content.lower()) and self.isPredictAvailable(2):
-            await ctx.send('Sigue a @ReportForFlame en Instagram! ❤️')
+            await message.channel.send('Sigue a @ReportForFlame en Instagram! ❤️')
             return
         if ('twitter' in message.content.lower() or 'tweet' in message.content.lower()) and self.isPredictAvailable(3):
-            await ctx.send('Sigue a @CrazyAnnieTMI en Twitter! 🐥')
+            await message.channel.send('Sigue a @CrazyAnnieTMI en Twitter! 🐥')
             return
 
         await self.handle_commands(message)
