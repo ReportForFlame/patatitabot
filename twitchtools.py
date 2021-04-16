@@ -2,15 +2,15 @@ import requests
 
 
 def sendCommercial(seconds=30):
-    url = 'https://api.twitch.tv/kraken/channels/68307698/commercial'
+    url = 'https://api.twitch.tv/helix/channels/commercial'
 
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
-            'Authorization': 'OAuth plzzydjz89p7xgjgosrq29vp2nbqg8',
+            'Authorization': 'Bearer plzzydjz89p7xgjgosrq29vp2nbqg8',
             'Content-Type': 'application/json'}
 
-    data = '{"length":' + str(seconds) + '}'
+    data = '{"broadcaster_id": "68307698","length":' + str(seconds) + '}'
     try:
         r = requests.post(url, headers=headers, timeout=2, data=data)
     except requests.exceptions.Timeout:
@@ -27,7 +27,7 @@ def streamGame():
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
-            'Authorization': 'OAuth nm3cnv0m14p5z2jrnpsf8ni0ciay5n',
+            'Authorization': 'Bearer nm3cnv0m14p5z2jrnpsf8ni0ciay5n',
             'Content-Type': 'application/json'}
 
     try:
@@ -47,7 +47,7 @@ def setTitle(title):
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
-            'Authorization': 'OAuth 9zi06iz0xbbxgx39luihjyi8jqme06',
+            'Authorization': 'Bearer 9zi06iz0xbbxgx39luihjyi8jqme06',
             'Content-Type': 'application/json'}
     game = "33214"
     '''data = '{"game_id":' + game + ', "title":' + title + ', "broadcaster_language":"es"}'''
