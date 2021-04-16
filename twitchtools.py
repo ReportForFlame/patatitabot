@@ -126,7 +126,7 @@ def streamLive():
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
-    if data:
+    if data.get('data'):
         live = data.get('data')[0]
         print(live)
         live = live.get('type')
