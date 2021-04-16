@@ -117,7 +117,7 @@ def streamLive():
             'Authorization': 'Bearer ow5eb0mn24grw8uuhjq86l037prqbw'}
 
     try:
-        r = requests.patch(url, headers=headers, timeout=2, data=data)
+        r = requests.get(url, headers=headers, timeout=2)
     except requests.exceptions.Timeout:
         raise Exception('timeout')
 
