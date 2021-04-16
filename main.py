@@ -5,7 +5,7 @@ import re
 import asyncio
 from datetime import datetime
 from random import choice
-from datetime import datetime
+from datetime import datetime, date
 from twitchtools import sendCommercial, setTitle, setGame, streamLive, followSince
 
 
@@ -207,7 +207,7 @@ class Bot(commands.Bot):
     async def follow(self, ctx):
         fecha = followSince(ctx.author.id)
 
-        
+
         today = date.today()
         past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
         print(past_date)
