@@ -165,7 +165,8 @@ class Bot(commands.Bot):
         else:
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
 
-    @commands.command(name='advice')
+
+    @commands.command(name='add')
     async def add(self, ctx):
         if ctx.author.name.lower() != ADMIN: return
         if len(ctx.content) >=5:
@@ -173,7 +174,6 @@ class Bot(commands.Bot):
             sendCommercial(int(time))
         else:
             sendCommercial(30)
-
 
     @commands.command(name='verse')
     async def verse(self, ctx):
