@@ -126,11 +126,13 @@ def streamLive():
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
-    live = data.get('data')[0]
-    print(live)
-    live = live.get('type')
-    print(live)
-    return live
+    if data:
+        live = data.get('data')[0]
+        print(live)
+        live = live.get('type')
+        print(live)
+        return True
+    return False
 
 '''
 https://dev.twitch.tv/docs/authentication#getting-tokens
