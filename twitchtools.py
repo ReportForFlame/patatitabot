@@ -27,8 +27,7 @@ def streamGame():
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
-            'Authorization': 'Bearer nm3cnv0m14p5z2jrnpsf8ni0ciay5n',
-            'Content-Type': 'application/json'}
+            'Authorization': 'Bearer x94exnv7s5bp53vssdjm462ruq8lmq'}
 
     try:
         r = requests.get(url, headers=headers, timeout=2)
@@ -49,8 +48,8 @@ def setTitle(title):
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
             'Authorization': 'Bearer ow5eb0mn24grw8uuhjq86l037prqbw',
             'Content-Type': 'application/json'}
-    game = "33214"
-    print(title)
+    game = streamGame()
+    print(game)
     data = '{"game_id":"' + game + '", "title":"' + title + '", "broadcaster_language":"es"}'
     # data = '{"game_id":"33214", "title":"Esto es un ejemplo", "broadcaster_language":"es"}'
     try:
