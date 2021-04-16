@@ -21,8 +21,24 @@ def sendCommercial(seconds=30):
 
     print(f'Sending commercial result: {results}')
 
-'''def gametoId():'''
+def streamGame():
+    url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
 
+    headers = {
+            'Accept': 'application/vnd.twitchtv.v5+json',
+            'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
+            'Authorization': 'OAuth nm3cnv0m14p5z2jrnpsf8ni0ciay5n',
+            'Content-Type': 'application/json'}
+
+    try:
+        r = requests.get(url, headers=headers, timeout=2)
+    except requests.exceptions.Timeout:
+        raise Exception('timeout')
+
+    results = r.content
+
+
+    print(f'Sending streamGame results: {results}')
 
 
 def setTitle(title):
@@ -37,7 +53,7 @@ def setTitle(title):
     data = '{"game_id":' + game + ', "title":' + title + ', "broadcaster_language":"es"}'
 
     try:
-        r = requests.post(url, headers=headers, timeout=2, data=data)
+        r = requests.patch(url, headers=headers, timeout=2, data=data)
     except requests.exceptions.Timeout:
         raise Exception('timeout')
 
