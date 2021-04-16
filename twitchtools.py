@@ -55,10 +55,11 @@ def gameId(game):
         raise Exception('timeout')
 
     resultsByte = r.content
+    print(resultsByte)
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
-    return data.get('data')[0]
+    #return data.get('data')[0]
 
 def setTitle(title):
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
