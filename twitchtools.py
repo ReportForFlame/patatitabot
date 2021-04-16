@@ -127,6 +127,7 @@ def streamLive():
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
     live = data.get('data')[0]
+    print(live)
     live = live.get('type')
     print(live)
     return live
