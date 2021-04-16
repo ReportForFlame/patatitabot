@@ -5,7 +5,7 @@ import re
 import asyncio
 from datetime import datetime
 from random import choice
-from twitchtools import sendCommercial, setTitle, setGame
+from twitchtools import sendCommercial, setTitle, setGame, streamLive
 
 
 #compilarPatrones
@@ -196,6 +196,11 @@ class Bot(commands.Bot):
             setGame(game)
         else:
             await ctx.send(f'Tienes que especificar el nuevo juego para el stream.')
+
+    @commands.command(name='live')
+    async def live(self, ctx):
+        live = streamLive()
+            await ctx.send(live)
 
     @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):

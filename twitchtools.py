@@ -108,7 +108,27 @@ def setGame(name):
 
     print(f'Sending setGame results: {results}')
 
+def streamLive():
+    url = 'https://api.twitch.tv/helix/streams'
 
+    headers = {
+            'Accept': 'application/vnd.twitchtv.v5+json',
+            'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
+            'Authorization': 'Bearer ow5eb0mn24grw8uuhjq86l037prqbw'}
+
+    try:
+        r = requests.patch(url, headers=headers, timeout=2, data=data)
+    except requests.exceptions.Timeout:
+        raise Exception('timeout')
+
+    resultsByte = r.content
+    print(resultsByte)
+    resultsStr = resultsByte.decode('utf8')
+    data = json.loads(resultsStr)
+    print(f'Sending streamGame results: {data}')
+    live = data.get('data')[0]
+    live = live.get('type')
+    return live
 
 '''
 https://dev.twitch.tv/docs/authentication#getting-tokens
