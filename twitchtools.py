@@ -166,6 +166,7 @@ def followSince(user):
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
+    data = data.get('data')[0]
     fecha = data.get('followed_at')
     print(fecha)
     return fecha
