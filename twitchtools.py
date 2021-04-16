@@ -47,7 +47,7 @@ def setTitle(title):
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
-            'Authorization': 'OAuth nm3cnv0m14p5z2jrnpsf8ni0ciay5n',
+            'Authorization': 'OAuth 9zi06iz0xbbxgx39luihjyi8jqme06',
             'Content-Type': 'application/json'}
     game = "33214"
     '''data = '{"game_id":' + game + ', "title":' + title + ', "broadcaster_language":"es"}'''
