@@ -128,6 +128,7 @@ def streamLive():
     print(f'Sending streamGame results: {data}')
     live = data.get('data')[0]
     live = live.get('type')
+    print(live)
     return live
 
 '''
