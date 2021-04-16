@@ -34,10 +34,11 @@ def streamGame():
     except requests.exceptions.Timeout:
         raise Exception('timeout')
 
-    results = r.content
-
-
-    print(f'Sending streamGame results: {results}')
+    resultsByte = r.content
+    resultsStr = resultsByte.decode('utf8')
+    data = json.loads(resultsStr)
+    print(f'Sending streamGame results: {data}')
+    return data
 
 
 def setTitle(title):
