@@ -50,7 +50,7 @@ def setTitle(title):
             'Content-Type': 'application/json'}
     game = streamGame()
     print(game)
-    data = '{"game_id":"' + game + '", "title":"' + title + '", "broadcaster_language":"es"}'
+    data = '{"game_id":"' + game + '", "title":"' + str(title) + '", "broadcaster_language":"es"}'
     # data = '{"game_id":"33214", "title":"Esto es un ejemplo", "broadcaster_language":"es"}'
     try:
         r = requests.patch(url, headers=headers, timeout=2, data=data)
