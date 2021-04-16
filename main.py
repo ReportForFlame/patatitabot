@@ -5,7 +5,7 @@ import re
 import asyncio
 from datetime import datetime
 from random import choice
-import twitchtools
+from twitchtools import sendCommercial, setTitle
 
 
 #compilarPatrones
