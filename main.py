@@ -191,8 +191,8 @@ class Bot(commands.Bot):
     @commands.command(name='game')
     async def game(self, ctx):
         if ctx.author.name.lower() != ADMIN: return
-        if len(ctx.content) >=7:
-            game = ctx.content[7:]
+        if len(ctx.content) >=6:
+            game = ctx.content[6:]
             setGame(game)
         else:
             await ctx.send(f'Tienes que especificar el nuevo juego para el stream.')
