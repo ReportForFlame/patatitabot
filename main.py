@@ -180,7 +180,7 @@ class Bot(commands.Bot):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
 
     @commands.command(name='title')
-    async def add(self, ctx):
+    async def title(self, ctx):
         if ctx.author.name.lower() != ADMIN: return
         if len(ctx.content) >=7:
             title = ctx.content[7:]

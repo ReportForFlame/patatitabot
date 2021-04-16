@@ -22,7 +22,7 @@ def sendCommercial(seconds=30):
 
     print(f'Sending commercial result: {results}')
 
-def streamGame():
+def streamData():
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
 
     headers = {
@@ -41,6 +41,24 @@ def streamGame():
     print(f'Sending streamGame results: {data}')
     return data
 
+def gameId(game):
+    url = 'https://api.twitch.tv/helix/games?name=' + str(game)
+
+    headers = {
+            'Accept': 'application/vnd.twitchtv.v5+json',
+            'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
+            'Authorization': 'Bearer x94exnv7s5bp53vssdjm462ruq8lmq'}
+
+    try:
+        r = requests.get(url, headers=headers, timeout=2)
+    except requests.exceptions.Timeout:
+        raise Exception('timeout')
+
+    resultsByte = r.content
+    resultsStr = resultsByte.decode('utf8')
+    data = json.loads(resultsStr)
+    print(f'Sending streamGame results: {data}')
+    return data
 
 def setTitle(title):
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
@@ -50,7 +68,7 @@ def setTitle(title):
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
             'Authorization': 'Bearer ow5eb0mn24grw8uuhjq86l037prqbw',
             'Content-Type': 'application/json'}
-    data = streamGame()
+    data = streamData()
     game = data.get('game_id')
     print(game)
     data = '{"game_id":"' + str(game) + '", "title":"' + str(title) + '", "broadcaster_language":"es"}'
@@ -64,6 +82,33 @@ def setTitle(title):
 
 
     print(f'Sending setTitle results: {results}')
+
+
+def setGame(name):
+    url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
+
+    headers = {
+            'Accept': 'application/vnd.twitchtv.v5+json',
+            'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
+            'Authorization': 'Bearer ow5eb0mn24grw8uuhjq86l037prqbw',
+            'Content-Type': 'application/json'}
+    data = streamData()
+    title = data.get('title')
+    print(title)
+    data1 = gameId(name)
+    game = data1.get('id')
+    data = '{"game_id":"' + str(game) + '", "title":"' + str(title) + '", "broadcaster_language":"es"}'
+    # data = '{"game_id":"33214", "title":"Esto es un ejemplo", "broadcaster_language":"es"}'
+    try:
+        r = requests.patch(url, headers=headers, timeout=2, data=data)
+    except requests.exceptions.Timeout:
+        raise Exception('timeout')
+
+    results = r.content
+
+
+    print(f'Sending setTitle results: {results}')
+
 
 
 '''
