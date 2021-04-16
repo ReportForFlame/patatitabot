@@ -206,16 +206,14 @@ class Bot(commands.Bot):
     @commands.command(name='follow')
     async def follow(self, ctx):
         fecha = followSince(ctx.author.id)
-        fecha = fecha.replace('-0','-')
-        fecha = fecha.replace('T','')
-        fecha = fecha.replace('Z','')
+
+        
         today = date.today()
-        past_date = datetime.strptime(fecha, '%Y-%-m-%-d %H:%M:%S')
+        past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
         print(past_date)
         days = (today - past_date).days
         await ctx.send(days)
 
-        2019-01-23T21:33:12Z
 
     @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):
