@@ -72,7 +72,7 @@ def setTitle(title):
     data = streamData()
     game = data.get('game_id')
     data = '{"game_id":"' + str(game) + '", "title":"' + str(title) + '", "broadcaster_language":"es"}'
-    # data = '{"game_id":"33214", "title":"Esto es un ejemplo", "broadcaster_language":"es"}'
+
     try:
         r = requests.patch(url, headers=headers, timeout=2, data=data)
     except requests.exceptions.Timeout:
@@ -97,7 +97,7 @@ def setGame(name):
     data1 = gameId(name)
     game = data1.get('id')
     data = '{"game_id":"' + str(game) + '", "title":"' + str(title) + '", "broadcaster_language":"es"}'
-    # data = '{"game_id":"33214", "title":"Esto es un ejemplo", "broadcaster_language":"es"}'
+
     try:
         r = requests.patch(url, headers=headers, timeout=2, data=data)
     except requests.exceptions.Timeout:
@@ -105,8 +105,8 @@ def setGame(name):
 
     results = r.content
 
-
     print(f'Sending setGame results: {results}')
+    
 
 def streamLive():
     url = 'https://api.twitch.tv/helix/streams?user_id=68307698'
@@ -122,7 +122,6 @@ def streamLive():
         raise Exception('timeout')
 
     resultsByte = r.content
-    print(resultsByte)
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
