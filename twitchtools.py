@@ -106,7 +106,7 @@ def setGame(name):
     results = r.content
 
     print(f'Sending setGame results: {results}')
-    
+
 
 def streamLive():
     url = 'https://api.twitch.tv/helix/streams?user_id=68307698'
@@ -129,6 +129,46 @@ def streamLive():
         return True
     return False
 
+def UserToId(user):
+    url = 'https://api.twitch.tv/helix/games?name=' + str(game)
+
+    headers = {
+            'Accept': 'application/vnd.twitchtv.v5+json',
+            'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
+            'Authorization': 'Bearer 6vluva5hnxag4tkrgw8fb36k23jm6z'}
+    print(url)
+    try:
+        r = requests.get(url, headers=headers, timeout=2)
+    except requests.exceptions.Timeout:
+        raise Exception('timeout')
+
+    resultsByte = r.content
+    print(resultsByte)
+    resultsStr = resultsByte.decode('utf8')
+    data = json.loads(resultsStr)
+    print(f'Sending streamGame results: {data}')
+    return data.get('data')[0]
+
+def followSince(user):
+    id = UserToId(user)
+    url = 'https://api.twitch.tv/helix/users/follows?first=1&to_id=68307698&from_id=' + id
+
+    headers = {
+            'Accept': 'application/vnd.twitchtv.v5+json',
+            'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
+            'Authorization': 'Bearer ow5eb0mn24grw8uuhjq86l037prqbw'}
+
+    try:
+        r = requests.get(url, headers=headers, timeout=2)
+    except requests.exceptions.Timeout:
+        raise Exception('timeout')
+
+    resultsByte = r.content
+    resultsStr = resultsByte.decode('utf8')
+    data = json.loads(resultsStr)
+    print(f'Sending streamGame results: {data}')
+    fecha = data.get('followed_at')
+    print(fecha)
 '''
 https://dev.twitch.tv/docs/authentication#getting-tokens
 channel:edit:commercial

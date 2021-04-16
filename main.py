@@ -197,10 +197,15 @@ class Bot(commands.Bot):
         else:
             await ctx.send(f'Tienes que especificar el nuevo juego para el stream.')
 
-    @commands.command(name='live')
+    '''@commands.command(name='live')
     async def live(self, ctx):
         live = streamLive()
-        await ctx.send(live)
+        await ctx.send(live)'''
+
+    @commands.command(name='follow')
+    async def follow(self, ctx):
+        fecha = get_follow(self, ctx.author.id, 68307698)
+        await ctx.send(fecha)
 
     @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):
