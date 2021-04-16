@@ -165,7 +165,7 @@ class Bot(commands.Bot):
         else:
             await ctx.send(f'Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
 
-    @commands.command(name='add')
+    @commands.command(name='advice')
     async def add(self, ctx):
         if ctx.author.name.lower() != ADMIN: return
         if len(ctx.content) >=5:
