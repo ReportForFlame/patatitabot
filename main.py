@@ -179,6 +179,15 @@ class Bot(commands.Bot):
     async def verse(self, ctx):
         await ctx.send(f'Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
 
+    @commands.command(name='title')
+    async def add(self, ctx):
+        if ctx.author.name.lower() != ADMIN: return
+        if len(ctx.content) >=7:
+            title = ctx.content[7:]
+            setTitle(title)
+        else:
+            await ctx.send(f'Tienes que especificar el nuevo titulo para el stream.')
+
     @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):
         comandos = []
