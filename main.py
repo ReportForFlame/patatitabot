@@ -9,7 +9,7 @@ from twitchtools import sendCommercial
 
 
 #compilarPatrones
-patron1 = re.compile('(?i)ho+la+')
+patron1 = re.compile('(?i)ho+l[aiou]+')
 patron2 = re.compile('(?i)co+fre+s*')
 ADMIN = 'reportforflame'
 MODS = ('darkor12', 'betterkrau')
@@ -71,7 +71,7 @@ class Bot(commands.Bot):
     async def event_message(self, message):
         print(message.content)
 
-        if patron1.search(message.content.lower()) and self.isPredictAvailable():
+        if patron1.search(message.content.lower()) and self.isPredictAvailable(1):
             if message.author.is_subscriber:
                 hello = f'Holaaa @{message.author.name}! 💜💜💜'
             else:
@@ -114,7 +114,7 @@ class Bot(commands.Bot):
 
     @commands.command(name='sw', aliases=['switch', 'nintendo'])
     async def switch(self, ctx):
-        await ctx.send('Agrégame en Nintendo Switch: SW-3824-4222-4328 🎮')
+        await ctx.send('Agrégame en Nintendo Switch: SW-0044-5826-1325 🎮')
 
 
     @commands.command(name='platanomelon', aliases=['pm', 'platano', 'melon'])
@@ -143,8 +143,8 @@ class Bot(commands.Bot):
             await ctx.send('Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi 💜 ^^')
             await asyncio.sleep(60 * 15)
             if not self.live: break
-            await ctx.send(f'Puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26 de StreamLoots! 🎁')
-            await ctx.send('Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi 💜 ^^')
+            await ctx.send(f'No olvides usar tu prime para apoyarme si te gusta mi stream 🤩')
+            await ctx.send('Tengo un canal de Discord por si os apetece uniros https://discord.gg/VaHwkrX 🥰 ^^')
             addTime = choice((30, 30, 60))
             sendCommercial(addTime)
 
