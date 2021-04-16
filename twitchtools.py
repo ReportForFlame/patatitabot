@@ -150,8 +150,7 @@ def UserToId(user):
     return data.get('data')[0]
 
 def followSince(user):
-    id = UserToId(user)
-    url = 'https://api.twitch.tv/helix/users/follows?first=1&to_id=68307698&from_id=' + id
+    url = 'https://api.twitch.tv/helix/users/follows?first=1&to_id=68307698&from_id=' + user
 
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
@@ -169,6 +168,7 @@ def followSince(user):
     print(f'Sending streamGame results: {data}')
     fecha = data.get('followed_at')
     print(fecha)
+    return fecha
 '''
 https://dev.twitch.tv/docs/authentication#getting-tokens
 channel:edit:commercial

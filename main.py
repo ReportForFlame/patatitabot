@@ -204,7 +204,7 @@ class Bot(commands.Bot):
 
     @commands.command(name='follow')
     async def follow(self, ctx):
-        fecha = get_follow(self, ctx.author.id, 68307698)
+        fecha = followSince(ctx.author.id)
         await ctx.send(fecha)
 
     @commands.command(name='comandos', aliases={'help'})
