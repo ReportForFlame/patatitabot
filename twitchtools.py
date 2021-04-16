@@ -39,7 +39,7 @@ def streamData():
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
-    return data
+    return data.get('data')[0]
 
 def gameId(game):
     url = 'https://api.twitch.tv/helix/games?name=' + str(game)
@@ -58,7 +58,7 @@ def gameId(game):
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
-    return data
+    return data.get('data')[0]
 
 def setTitle(title):
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
