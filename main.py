@@ -200,7 +200,7 @@ class Bot(commands.Bot):
     @commands.command(name='live')
     async def live(self, ctx):
         live = streamLive()
-            await ctx.send(live)
+        await ctx.send(live)
 
     @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):
