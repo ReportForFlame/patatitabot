@@ -150,7 +150,7 @@ def UserToId(user):
     return data.get('data')[0]
 
 def followSince(user):
-    url = 'https://api.twitch.tv/helix/users/follows?first=1&to_id=68307698&from_id=' + user
+    url = 'https://api.twitch.tv/helix/users/follows?first=1&to_id=68307698&from_id=' + str(user)
 
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
