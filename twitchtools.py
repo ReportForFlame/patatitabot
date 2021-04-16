@@ -109,7 +109,7 @@ def setGame(name):
     print(f'Sending setGame results: {results}')
 
 def streamLive():
-    url = 'https://api.twitch.tv/helix/streams?user_id=83232866'
+    url = 'https://api.twitch.tv/helix/streams?user_id=68307698'
 
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
