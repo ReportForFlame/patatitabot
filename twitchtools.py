@@ -48,7 +48,7 @@ def gameId(game):
             'Accept': 'application/vnd.twitchtv.v5+json',
             'Client-ID': '9ljs1m0m88zr2w2vgngm5ytpzf5xbx',
             'Authorization': 'Bearer x94exnv7s5bp53vssdjm462ruq8lmq'}
-
+    print(url)
     try:
         r = requests.get(url, headers=headers, timeout=2)
     except requests.exceptions.Timeout:
