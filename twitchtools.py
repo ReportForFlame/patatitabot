@@ -50,8 +50,7 @@ def setTitle(title):
             'Authorization': 'Bearer ow5eb0mn24grw8uuhjq86l037prqbw',
             'Content-Type': 'application/json'}
     game = "33214"
-    '''data = '{"game_id":' + game + ', "title":' + title + ', "broadcaster_language":"es"}'''
-    data = '{"game_id":"33214", "title":"Esto es un ejemplo", "broadcaster_language":"es"}'
+    data = '{"game_id":' + game + ', "title":' + title + ', "broadcaster_language":"es"}'''
     try:
         r = requests.patch(url, headers=headers, timeout=2, data=data)
     except requests.exceptions.Timeout:
