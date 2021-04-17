@@ -210,7 +210,6 @@ class Bot(commands.Bot):
     async def follow(self, ctx):
         if ctx.author.id != 68307698:
             fecha = followSince(ctx.author.id)
-
             today = datetime.now()
             past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
             print(past_date)
@@ -222,13 +221,19 @@ class Bot(commands.Bot):
         stream = streamLive()
         print(stream)
         if stream:
-            print(stream)
-
-            '''today = datetime.now()
+            fecha = stream.get('started_at')
+            today = datetime.now()
+            print()
             past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
             print(past_date)
-            days = (today - past_date).days
-            await ctx.send(f'Llevas siguiendo a ReportForFlame desde el ' + str(past_date.day) + '/' + str(past_date.month) + '/' + str(past_date.year) + ', o lo que es lo mismo, ' + str(days) + ' dias.')'''
+            sec = (today - past_date).seconds
+            if sec >= 3600:
+                horas = sec/3600
+                resto = sec%3600
+                if resto >= 60:
+                    minutos = resto/60
+                    segundos = resto%60
+            await ctx.send(f'Llevo ' + str(horas) + ' horas, ' + str(minutos) + ' minutos y ' + str(segundos) + ' segundos en directo.')
         else:
             await ctx.send(f'Lo siento, pero el stream no está activo.')
 
