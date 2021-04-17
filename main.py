@@ -205,13 +205,14 @@ class Bot(commands.Bot):
 
     @commands.command(name='follow')
     async def follow(self, ctx):
-        fecha = followSince(ctx.author.id)
+        if ctx.author.id != 68307698:
+            fecha = followSince(ctx.author.id)
 
-        today = datetime.now()
-        past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
-        print(past_date)
-        days = (today - past_date).days
-        await ctx.send(days)
+            today = datetime.now()
+            past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
+            print(past_date)
+            days = (today - past_date).days
+            await ctx.send(f'Llevas siguiendo a ReportForFlame desde el ' + past_date.day + '/' + past_date.month + '/' + past_date.year + ' , o lo que es lo mismo, ' + days + 'dias.')
 
 
     @commands.command(name='comandos', aliases={'help'})
