@@ -125,7 +125,10 @@ def streamLive():
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
-    result = data.get('data')
+    try:
+        result = data.get('data')[0]
+    except IndexError:
+        result = None
     return result
 
 def UserToId(user):
