@@ -212,7 +212,7 @@ class Bot(commands.Bot):
             past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
             print(past_date)
             days = (today - past_date).days
-            await ctx.send(f'Llevas siguiendo a ReportForFlame desde el ' + str(past_date.day) + '/' + str(past_date.month) + '/' + str(past_date.year) + ' , o lo que es lo mismo, ' + str(days) + 'dias.')
+            await ctx.send(f'Llevas siguiendo a ReportForFlame desde el ' + str(past_date.day) + '/' + str(past_date.month) + '/' + str(past_date.year) + ' , o lo que es lo mismo, ' + str(days) + ' dias.')
 
 
     @commands.command(name='comandos', aliases={'help'})
