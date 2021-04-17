@@ -216,7 +216,7 @@ class Bot(commands.Bot):
 
     @commands.command(name='timeup', aliases=['time', 'up'])
     async def timeup(self, ctx):
-        stream = ctx.channel.get_stream()
+        await stream = ctx.channel.get_stream()
         print(stream)
         if stream:
             print(stream)
