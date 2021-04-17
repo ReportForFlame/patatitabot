@@ -200,7 +200,10 @@ class Bot(commands.Bot):
 
     '''@commands.command(name='live')
     async def live(self, ctx):
-        live = streamLive()
+        data = streamLive()
+        if data.get('data'):
+            return True
+        return False
         await ctx.send(live)'''
 
     @commands.command(name='follow')
@@ -216,7 +219,7 @@ class Bot(commands.Bot):
 
     @commands.command(name='timeup', aliases=['time', 'up'])
     async def timeup(self, ctx):
-        stream = await ctx.channel.get_stream(self)
+        stream = streamLive()
         print(stream)
         if stream:
             print(stream)

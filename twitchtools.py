@@ -125,9 +125,8 @@ def streamLive():
     resultsStr = resultsByte.decode('utf8')
     data = json.loads(resultsStr)
     print(f'Sending streamGame results: {data}')
-    if data.get('data'):
-        return True
-    return False
+    result = data.get('data')
+    return result
 
 def UserToId(user):
     url = 'https://api.twitch.tv/helix/games?name=' + str(game)
