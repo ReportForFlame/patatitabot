@@ -223,15 +223,14 @@ class Bot(commands.Bot):
         if stream:
             fecha = stream.get('started_at')
             today = datetime.now()
-            print()
             past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
             print(past_date)
             sec = (today - past_date).seconds
             if sec >= 3600:
-                horas = sec/3600
+                horas = sec//3600
                 resto = sec%3600
                 if resto >= 60:
-                    minutos = resto/60
+                    minutos = resto//60
                     segundos = resto%60
             await ctx.send(f'Llevo ' + str(horas) + ' horas, ' + str(minutos) + ' minutos y ' + str(segundos) + ' segundos en directo.')
         else:
