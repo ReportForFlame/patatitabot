@@ -214,6 +214,21 @@ class Bot(commands.Bot):
             days = (today - past_date).days
             await ctx.send(f'Llevas siguiendo a ReportForFlame desde el ' + str(past_date.day) + '/' + str(past_date.month) + '/' + str(past_date.year) + ', o lo que es lo mismo, ' + str(days) + ' dias.')
 
+    @commands.command(name='timeup', aliases=['time', 'up'])
+    async def timeup(self, ctx):
+        stream = ctx.channel.get_stream()
+        print(stream)
+        if stream:
+            print(stream)
+
+            '''today = datetime.now()
+            past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
+            print(past_date)
+            days = (today - past_date).days
+            await ctx.send(f'Llevas siguiendo a ReportForFlame desde el ' + str(past_date.day) + '/' + str(past_date.month) + '/' + str(past_date.year) + ', o lo que es lo mismo, ' + str(days) + ' dias.')'''
+        else:
+            await ctx.send(f'Lo siento, pero el stream no está activo.')
+
 
     @commands.command(name='comandos', aliases={'help'})
     async def comandos(self, ctx):
