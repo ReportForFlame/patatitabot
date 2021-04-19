@@ -182,7 +182,7 @@ class Bot(commands.Bot):
 
     @commands.command(name='title')
     async def title(self, ctx):
-        if ctx.author.name.lower() != ADMIN: return
+        if ctx.author.name.lower() != MODS: return
         if len(ctx.content) >=7:
             title = ctx.content[7:]
             setTitle(title)
@@ -191,7 +191,7 @@ class Bot(commands.Bot):
 
     @commands.command(name='game')
     async def game(self, ctx):
-        if ctx.author.name.lower() != ADMIN: return
+        if ctx.author.name.lower() != MODS: return
         if len(ctx.content) >=6:
             game = ctx.content[6:]
             setGame(game)
