@@ -235,7 +235,7 @@ class Bot(commands.Bot):
                 if resto >= 60:
                     minutos = resto//60
                     segundos = resto%60
-            else if sec >=60:
+            elif sec >=60:
                 minutos = resto//60
                 segundos = resto%60
             else
