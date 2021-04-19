@@ -238,7 +238,7 @@ class Bot(commands.Bot):
             elif sec >=60:
                 minutos = resto//60
                 segundos = resto%60
-            else
+            else:
                 segundos = sec
             await ctx.send(f'Llevo ' + str(horas) + ' horas, ' + str(minutos) + ' minutos y ' + str(segundos) + ' segundos en directo.')
         else:
