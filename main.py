@@ -216,8 +216,8 @@ class Bot(commands.Bot):
             days = (today - past_date).days
             await ctx.send(f'Llevas siguiendo a ReportForFlame desde el ' + str(past_date.day) + '/' + str(past_date.month) + '/' + str(past_date.year) + ', o lo que es lo mismo, ' + str(days) + ' dias.')
 
-    @commands.command(name='timeup', aliases=['time', 'up'])
-    async def timeup(self, ctx):
+    @commands.command(name='uptime', aliases=['time', 'up'])
+    async def uptime(self, ctx):
         stream = streamLive()
         print(stream)
         horas = 0
