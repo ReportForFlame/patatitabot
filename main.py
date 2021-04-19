@@ -13,7 +13,7 @@ from twitchtools import sendCommercial, setTitle, setGame, streamLive, followSin
 patron1 = re.compile('(?i)ho+l[aiou]+')
 patron2 = re.compile('(?i)co+fre+s*')
 ADMIN = 'reportforflame'
-MODS = ('darkor12', 'betterkrau')
+MODS = ('darkor12', 'DarkoR12', 'betterkrau', 'reportforflame')
 
 #Clase Bot
 class Bot(commands.Bot):
