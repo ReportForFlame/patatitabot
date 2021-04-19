@@ -222,6 +222,7 @@ class Bot(commands.Bot):
         print(stream)
         horas = 0
         minutos = 0
+        segundos = 0
         if stream:
             fecha = stream.get('started_at')
             today = datetime.now()
@@ -234,6 +235,11 @@ class Bot(commands.Bot):
                 if resto >= 60:
                     minutos = resto//60
                     segundos = resto%60
+            else if sec >=60:
+                minutos = resto//60
+                segundos = resto%60
+            else
+                segundos = sec
             await ctx.send(f'Llevo ' + str(horas) + ' horas, ' + str(minutos) + ' minutos y ' + str(segundos) + ' segundos en directo.')
         else:
             await ctx.send(f'Lo siento, pero el stream no está activo.')
