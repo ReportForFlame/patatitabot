@@ -220,6 +220,8 @@ class Bot(commands.Bot):
     async def timeup(self, ctx):
         stream = streamLive()
         print(stream)
+        horas = 0
+        minutos = 0
         if stream:
             fecha = stream.get('started_at')
             today = datetime.now()
