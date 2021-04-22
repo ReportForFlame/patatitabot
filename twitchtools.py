@@ -40,7 +40,7 @@ def streamData():
     data = json.loads(resultsStr)
     print(f'Sending streamData results: {data}')
     try:
-        return data.get('data')[0]ç
+        return data.get('data')[0]
     except IndexError:
         return None;
 
