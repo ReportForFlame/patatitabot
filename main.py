@@ -67,7 +67,7 @@ class Bot(commands.Bot):
     async def event_message(self, message):
         print(message.content)
 
-        await self.timers(self, message)
+        await self.timers(message)
         if patron1.search(
                 message.content.lower()) and self.isPredictAvailable(0):
             if message.author.is_subscriber:
