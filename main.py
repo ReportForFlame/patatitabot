@@ -43,7 +43,7 @@ class Bot(commands.Bot):
         ws = self._ws
         await ws.send_privmsg(self.channel, "/me ha aparecido!")
 
-    def isLive():
+    def isLive(self):
         data = streamLive()
         if data.get('data'):
             return True
