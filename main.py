@@ -67,7 +67,6 @@ class Bot(commands.Bot):
     async def event_message(self, message):
         print(message.content)
 
-        await self.timers(message)
         if patron1.search(
                 message.content.lower()) and self.isPredictAvailable(0):
             if message.author.is_subscriber:
@@ -88,6 +87,7 @@ class Bot(commands.Bot):
                 'https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
         await self.handle_commands(message)
+        # await self.timers(message)
 
     async def timers(self, message):
         while not self.isLive():
