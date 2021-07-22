@@ -250,6 +250,8 @@ class Bot(commands.Bot):
         comandos = []
         seperator = ", "
         if ctx.author.name.lower() in MODS:
+            for command in self.commands:
+                comandos.append(command)
             await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(commands))
         else:
             for command in self.commands:
