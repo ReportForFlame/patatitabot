@@ -4,7 +4,7 @@ import asyncio
 from datetime import datetime
 from random import choice
 
-from twitchtools import sendCommercial, setTitle, setGame, streamLive, followSince
+from twitchtools import sendCommercial, setTitle, setGame, streamData, followSince
 
 
 # compilarPatrones
@@ -44,7 +44,7 @@ class Bot(commands.Bot):
         await ws.send_privmsg(self.channel, "/me ha aparecido!")
 
     def isLive(self):
-        data = streamLive()
+        data = streamData()
         if data is not None:
             return True
         else:
