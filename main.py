@@ -40,11 +40,10 @@ class Bot(commands.Bot):
         self.lastTwitterDate = datetime.now()
         self.live = False
 
-
-async def event_ready(self):
-    print(f'Listo! | {self.nick}')
-    ws = self._ws
-    await ws.send_privmsg(self.channel, "/me ha aparecido!")
+    async def event_ready(self):
+        print(f'Listo! | {self.nick}')
+        ws = self._ws
+        await ws.send_privmsg(self.channel, "/me ha aparecido!")
 
     def isPredictAvailable(self, type=0):
         timeNow = datetime.now()
