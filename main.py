@@ -252,10 +252,10 @@ class Bot(commands.Bot):
         if ctx.author.name.lower() in MODS:
             await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(commands))
         else:
-        for command in self.commands:
-            if command != 'comandos' and command != 'startstream' and command != 'endstream' and command != 'title' and command != 'game':
-                comandos.append(command)
-        await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
+            for command in self.commands:
+                if command != 'comandos' and command != 'startstream' and command != 'endstream' and command != 'title' and command != 'game':
+                    comandos.append(command)
+            await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(comandos))
 
 
 #Ejecutar bot
