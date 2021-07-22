@@ -249,6 +249,9 @@ class Bot(commands.Bot):
     async def comandos(self, ctx):
         comandos = []
         seperator = ", "
+        if ctx.author.name.lower() in MODS:
+            await ctx.send(f'Los comandos del stream son:'+ "\n" + seperator.join(commands))
+        else:
         for command in self.commands:
             if command != 'comandos' and command != 'startstream' and command != 'endstream' and command != 'title' and command != 'game':
                 comandos.append(command)
