@@ -45,7 +45,7 @@ class Bot(commands.Bot):
 
     def isLive(self):
         data = streamLive()
-        if data.get('data'):
+        if data is not None:
             return True
         else:
             return False
