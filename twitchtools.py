@@ -139,7 +139,7 @@ def streamLive():
     print(f'Sending streamGame results: {data}')
     try:
         result = data.get('data')[0]
-    except IndexError:
+    except TypeError:
         result = None
     return result
 
