@@ -72,7 +72,8 @@ class Bot(commands.Bot):
     async def event_message(self, message):
         print(message.content)
 
-        if patron1.search(message.content.lower()) and self.isPredictAvailable(1):
+        if patron1.search(
+                message.content.lower()) and self.isPredictAvailable(1):
             if message.author.is_subscriber:
                 hello = f'Holaaa @{message.author.name}! 💜💜💜'
             else:
@@ -83,36 +84,39 @@ class Bot(commands.Bot):
                 ))
             await message.channel.send(hello)
 
-        elif patron2.search(message.content.lower()) and self.isPredictAvailable(1):
-            await message.channel.send('¿He leido cofre? Puedes conseguir un cofre gratis de la colección de @ReportForFlame en Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
-
-        if ('insta' in message.content.lower() or 'instagram' in message.content.lower()) and self.isPredictAvailable(2):
-            await message.channel.send('Sigue a @ReportForFlame en Instagram! ❤️')
-            return
-        if ('twitter' in message.content.lower() or 'tweet' in message.content.lower()) and self.isPredictAvailable(3):
-            await message.channel.send('Sigue a @CrazyAnnieTMI en Twitter! 🐥')
-            return
+        elif patron2.search(
+                message.content.lower()) and self.isPredictAvailable(1):
+            await message.channel.send(
+                '¿He leido cofre? Puedes conseguir un cofre gratis de la '
+                'colección de @ReportForFlame en Streamloots '
+                'https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
         await self.handle_commands(message)
 
     # Decorador para los comandos
     @commands.command(name='discord')
     async def discord(self, ctx):
-        await ctx.send('Si queréis formar parte de una gran comunidad, uníos sin faltar https://discord.gg/VaHwkrX')
+        await ctx.send(
+            'Si queréis formar parte de una gran comunidad,'
+            ' uníos sin faltar https://discord.gg/VaHwkrX')
 
     @commands.command(name='loots')
     async def loots(self, ctx):
-        await ctx.send('Consigue un cofre gratis de mi colección de Streamloots https://www.streamloots.com/reportforflame?couponCode=YIT26')
+        await ctx.send(
+            'Consigue un cofre gratis de mi colección de Streamloots '
+            'https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
     @commands.command(name='twitter')
     async def twitter(self, ctx):
-        await ctx.send('Puedes seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi')
+        await ctx.send(
+            'Puedes seguirme en twitter para estar al tanto'
+            'de todo twitter.com/crazyannietmi')
 
     @commands.command(name='ig', aliases=['instagram'])
     async def ig(self, ctx):
         await ctx.send('Sigue a @ReportForFlame en Instagram! ❤️')
 
-    @commands.command(name='sw', aliases=['switch', 'nintendo'])
+    @commands.command(name='switch', aliases=['sw', 'nintendo'])
     async def switch(self, ctx):
         await ctx.send('Agrégame en Nintendo Switch: SW-0044-5826-1325 🎮')
 
@@ -140,13 +144,22 @@ class Bot(commands.Bot):
             await asyncio.sleep(60 * 15)
             if not self.live:
                 break
-            await ctx.send('Puedes canjearme un cofre usando este código: https://www.streamloots.com/reportforflame?couponCode=YIT26 de StreamLoots! 🎁')
-            await ctx.send('Recuerda seguirme en twitter para estar al tanto de todo twitter.com/crazyannietmi 💜 ^^')
+            await ctx.send(
+                'Puedes canjearme un cofre usando este código: '
+                'https://www.streamloots.com/reportforflame?couponCode=YIT26 '
+                'de StreamLoots! 🎁')
+            await ctx.send(
+                'Recuerda seguirme en twitter para estar al tanto '
+                'de todo twitter.com/crazyannietmi 💜 ^^')
             await asyncio.sleep(60 * 15)
             if not self.live:
                 break
-            await ctx.send('No olvides usar tu prime para apoyarme si te gusta mi stream 🤩')
-            await ctx.send('Tengo un canal de Discord por si os apetece uniros https://discord.gg/VaHwkrX 🥰 ^^')
+            await ctx.send(
+                'No olvides usar tu prime para apoyarme '
+                'si te gusta mi stream 🤩')
+            await ctx.send(
+                'Tengo un canal de Discord por si os apetece uniros '
+                'https://discord.gg/VaHwkrX 🥰 ^^')
             addTime = choice((30, 30, 60))
             sendCommercial(addTime)
 
@@ -165,7 +178,9 @@ class Bot(commands.Bot):
             user = ctx.content[9:]
             await ctx.send(f'{ctx.author.name} le da un gran abrazo a {user}!')
         else:
-            await ctx.send('Necesito que me digas a quien quieres abrazar mencionándolo después del comando.')
+            await ctx.send(
+                'Necesito que me digas a quien quieres abrazar '
+                'mencionándolo después del comando.')
 
     @commands.command(name='add')
     async def add(self, ctx):
@@ -179,7 +194,9 @@ class Bot(commands.Bot):
 
     @commands.command(name='verse')
     async def verse(self, ctx):
-        await ctx.send('Usa mi codigo promocional para ganar 5€ con Verse. Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
+        await ctx.send(
+            'Usa mi codigo promocional para ganar 5€ con Verse. '
+            'Mejor que Bizum. Link: https://verse.me/invite/3GQR4P')
 
     @commands.command(name='title')
     async def title(self, ctx):
@@ -189,7 +206,9 @@ class Bot(commands.Bot):
             title = ctx.content[7:]
             setTitle(title)
         else:
-            await ctx.send('Tienes que especificar el nuevo titulo para el stream.')
+            await ctx.send(
+                'Tienes que especificar el '
+                'nuevo titulo para el stream.')
 
     @commands.command(name='game')
     async def game(self, ctx):
@@ -199,7 +218,9 @@ class Bot(commands.Bot):
             game = ctx.content[6:]
             setGame(game)
         else:
-            await ctx.send('Tienes que especificar el nuevo juego para el stream.')
+            await ctx.send(
+                'Tienes que especificar el '
+                'nuevo juego para el stream.')
 
     '''@commands.command(name='live')
     async def live(self, ctx):
@@ -217,7 +238,11 @@ class Bot(commands.Bot):
             past_date = datetime.strptime(fecha, '%Y-%m-%dT%H:%M:%SZ')
             print(past_date)
             days = (today - past_date).days
-            await ctx.send('Llevas siguiendo a ReportForFlame desde el ' + str(past_date.day) + '/' + str(past_date.month) + '/' + str(past_date.year) + ', o lo que es lo mismo, ' + str(days) + ' dias.')
+            await ctx.send(
+                'Llevas siguiendo a ReportForFlame desde el '
+                + str(past_date.day) + '/' + str(past_date.month) + '/'
+                + str(past_date.year) + ', o lo que es lo mismo, '
+                + str(days) + ' dias.')
 
     @commands.command(name='uptime', aliases=['time', 'up'])
     async def uptime(self, ctx):
@@ -243,7 +268,10 @@ class Bot(commands.Bot):
                 segundos = resto % 60
             else:
                 segundos = sec
-            await ctx.send('Llevo ' + str(horas) + ' horas, ' + str(minutos) + ' minutos y ' + str(segundos) + ' segundos en directo.')
+            await ctx.send(
+                'Llevo ' + str(horas) + ' horas, '
+                + str(minutos) + ' minutos y ' + str(segundos)
+                + ' segundos en directo.')
         else:
             await ctx.send('Lo siento, pero el stream no está activo.')
 
@@ -254,12 +282,16 @@ class Bot(commands.Bot):
         if ctx.author.name.lower() in MODS:
             for command in self.commands:
                 comandos.append(command)
-            await ctx.send('Los comandos del stream son:' + "\n" + seperator.join(comandos))
+            await ctx.send(
+                'Los comandos del stream son:' + "\n"
+                + seperator.join(comandos))
         else:
             for command in self.commands:
                 if command != 'comandos' and command != 'startstream' and command != 'endstream' and command != 'title' and command != 'game':
                     comandos.append(command)
-            await ctx.send('Los comandos del stream son:' + "\n" + seperator.join(comandos))
+            await ctx.send(
+                'Los comandos del stream son:' + "\n"
+                + seperator.join(comandos))
 
 
 # Ejecutar bot

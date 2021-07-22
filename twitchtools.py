@@ -19,8 +19,8 @@ def sendCommercial(seconds=30):
 
     results = r.content
 
-
     print(f'Sending commercial result: {results}')
+
 
 def streamData():
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
@@ -42,7 +42,8 @@ def streamData():
     try:
         return data.get('data')[0]
     except IndexError:
-        return None;
+        return None
+
 
 def gameId(game):
     url = 'https://api.twitch.tv/helix/games?name=' + str(game)
@@ -64,6 +65,7 @@ def gameId(game):
     print(f'Sending streamGame results: {data}')
     return data.get('data')[0]
 
+
 def setTitle(title):
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
 
@@ -74,7 +76,8 @@ def setTitle(title):
             'Content-Type': 'application/json'}
     data = streamData()
     game = data.get('game_id')
-    data = '{"game_id":"' + str(game) + '", "title":"' + str(title) + '", "broadcaster_language":"es"}'
+    data = '{"game_id":"' + str(game) + '", "title":"' + str(title)
+    + '", "broadcaster_language":"es"}'
 
     try:
         r = requests.patch(url, headers=headers, timeout=2, data=data)
@@ -82,7 +85,6 @@ def setTitle(title):
         raise Exception('timeout')
 
     results = r.content
-
 
     print(f'Sending setTitle results: {results}')
 
@@ -99,7 +101,8 @@ def setGame(name):
     title = data.get('title')
     data1 = gameId(name)
     game = data1.get('id')
-    data = '{"game_id":"' + str(game) + '", "title":"' + str(title) + '", "broadcaster_language":"es"}'
+    data = '{"game_id":"' + str(game) + '", "title":"' + str(title)
+    + '", "broadcaster_language":"es"}'
 
     try:
         r = requests.patch(url, headers=headers, timeout=2, data=data)
@@ -134,8 +137,9 @@ def streamLive():
         result = None
     return result
 
+
 def UserToId(user):
-    url = 'https://api.twitch.tv/helix/games?name=' + str(game)
+    url = 'https://api.twitch.tv/helix/games?name='
 
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
@@ -154,8 +158,10 @@ def UserToId(user):
     print(f'Sending streamGame results: {data}')
     return data.get('data')[0]
 
+
 def followSince(user):
-    url = 'https://api.twitch.tv/helix/users/follows?first=1&to_id=68307698&from_id=' + str(user)
+    url = 'https://api.twitch.tv/helix/users/follows?'
+    'first=1&to_id=68307698&from_id=' + str(user)
 
     headers = {
             'Accept': 'application/vnd.twitchtv.v5+json',
@@ -175,6 +181,8 @@ def followSince(user):
     fecha = data.get('followed_at')
     print(fecha)
     return fecha
+
+
 '''
 https://dev.twitch.tv/docs/authentication#getting-tokens
 channel:edit:commercial
