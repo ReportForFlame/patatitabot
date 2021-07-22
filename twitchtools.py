@@ -2,7 +2,8 @@ import requests
 import json
 
 
-def sendCommercial(seconds=30):
+# Función para enviar anuncio
+def sendCommercial(seconds):
     url = 'https://api.twitch.tv/helix/channels/commercial'
 
     headers = {
@@ -22,6 +23,7 @@ def sendCommercial(seconds=30):
     print(f'Sending commercial result: {results}')
 
 
+# Funcion para sacar la informacion de un stream
 def streamData():
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
 
@@ -45,6 +47,7 @@ def streamData():
         return None
 
 
+# Función para convertir texto a id de juego
 def gameId(game):
     url = 'https://api.twitch.tv/helix/games?name=' + str(game)
 
@@ -66,6 +69,7 @@ def gameId(game):
     return data.get('data')[0]
 
 
+# Función para cambiar el titulo del stream
 def setTitle(title):
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
 
@@ -89,6 +93,7 @@ def setTitle(title):
     print(f'Sending setTitle results: {results}')
 
 
+# Función para cambiar la categoria del stream
 def setGame(name):
     url = 'https://api.twitch.tv/helix/channels?broadcaster_id=68307698'
 
@@ -114,6 +119,7 @@ def setGame(name):
     print(f'Sending setGame results: {results}')
 
 
+# Función para comprobar que un canal está en directo
 def streamLive():
     url = 'https://api.twitch.tv/helix/streams?user_id=68307698'
 
@@ -138,6 +144,7 @@ def streamLive():
     return result
 
 
+# Función para convertir texto a id de user
 def UserToId(user):
     url = 'https://api.twitch.tv/helix/games?name='
 
@@ -159,6 +166,7 @@ def UserToId(user):
     return data.get('data')[0]
 
 
+# Función para ver desde hace cuanto tiempo sigues al canal
 def followSince(user):
     url = 'https://api.twitch.tv/helix/users/follows?'
     'first=1&to_id=68307698&from_id=' + str(user)

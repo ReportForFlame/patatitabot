@@ -36,14 +36,19 @@ class Bot(commands.Bot):
         self.channel = config['CHANNEL']
         self.lastPredictedDate = datetime.now()
         self.lastHelloDate = datetime.now()
-        self.lastInstaDate = datetime.now()
-        self.lastTwitterDate = datetime.now()
-        self.live = False
+        # self.live = False
 
     async def event_ready(self):
         print(f'Listo! | {self.nick}')
         ws = self._ws
         await ws.send_privmsg(self.channel, "/me ha aparecido!")
+
+    def isLive():
+        data = streamLive()
+        if data.get('data'):
+            return True
+        else:
+            return False
 
     def isPredictAvailable(self, type=0):
         timeNow = datetime.now()
@@ -57,23 +62,14 @@ class Bot(commands.Bot):
             available = seconds >= 20
             if available:
                 self.lastHelloDate = timeNow
-        elif type == 2:
-            seconds = (timeNow - self.lastInstaDate).total_seconds()
-            available = seconds >= 120
-            if available:
-                self.lastInstaDate = timeNow
-        elif type == 3:
-            seconds = (timeNow - self.lastTwitterDate).total_seconds()
-            available = seconds >= 120
-            if available:
-                self.lastTwitterDate = timeNow
         return available
 
     async def event_message(self, message):
         print(message.content)
 
+        await self.timers(self, message)
         if patron1.search(
-                message.content.lower()) and self.isPredictAvailable(1):
+                message.content.lower()) and self.isPredictAvailable(0):
             if message.author.is_subscriber:
                 hello = f'Holaaa @{message.author.name}! 💜💜💜'
             else:
@@ -92,6 +88,29 @@ class Bot(commands.Bot):
                 'https://www.streamloots.com/reportforflame?couponCode=YIT26')
 
         await self.handle_commands(message)
+
+    async def timers(self, message):
+        while not self.isLive():
+            await asyncio.sleep(60 * 15)
+            '''if not self.isLive():
+                break'''
+            await message.send(
+                'Puedes canjearme un cofre usando este código: '
+                'https://www.streamloots.com/reportforflame?couponCode=YIT26 '
+                'de StreamLoots! 🎁')
+            await message.send(
+                'Recuerda seguirme en twitter para estar al tanto '
+                'de todo twitter.com/crazyannietmi 💜 ^^')
+            await asyncio.sleep(60 * 15)
+            '''if not self.isLive():
+                break'''
+            await message.send(
+                'No olvides usar tu prime para apoyarme '
+                'si te gusta mi stream 🤩')
+            await message.send(
+                'Tengo un canal de Discord por si os apetece uniros '
+                'https://discord.gg/VaHwkrX 🥰 ^^')
+            sendCommercial(30)
 
     # Decorador para los comandos
     @commands.command(name='discord')
@@ -114,7 +133,7 @@ class Bot(commands.Bot):
 
     @commands.command(name='ig', aliases=['instagram'])
     async def ig(self, ctx):
-        await ctx.send('Sigue a @ReportForFlame en Instagram! ❤️')
+        await ctx.send('Sigueme en Instagram @ReportForFlame! ❤️')
 
     @commands.command(name='switch', aliases=['sw', 'nintendo'])
     async def switch(self, ctx):
@@ -160,8 +179,7 @@ class Bot(commands.Bot):
             await ctx.send(
                 'Tengo un canal de Discord por si os apetece uniros '
                 'https://discord.gg/VaHwkrX 🥰 ^^')
-            addTime = choice((30, 30, 60))
-            sendCommercial(addTime)
+            sendCommercial(30)
 
     @commands.command(name='endstream', aliases=['stopstream'])
     async def endstream(self, ctx):
@@ -239,10 +257,15 @@ class Bot(commands.Bot):
             print(past_date)
             days = (today - past_date).days
             await ctx.send(
-                'Llevas siguiendo a ReportForFlame desde el '
+                'Llevas siguiendome desde el '
                 + str(past_date.day) + '/' + str(past_date.month) + '/'
                 + str(past_date.year) + ', o lo que es lo mismo, '
                 + str(days) + ' dias.')
+        else:
+            await ctx.send(
+                'Aunque me gustaría poder decirte cuanto tiempo llevas '
+                'siguiendo a ReportForFlame, resulta que sois la misma persona'
+                ' y no me han actualizado para comprender el multiverso.')
 
     @commands.command(name='uptime', aliases=['time', 'up'])
     async def uptime(self, ctx):
