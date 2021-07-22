@@ -91,7 +91,7 @@ class Bot(commands.Bot):
 
     async def timers(self, message):
         while not self.isLive():
-            await asyncio.sleep(60 * 15)
+            await asyncio.sleep(60 * 1)
             '''if not self.isLive():
                 break'''
             await message.send(
@@ -101,7 +101,7 @@ class Bot(commands.Bot):
             await message.send(
                 'Recuerda seguirme en twitter para estar al tanto '
                 'de todo twitter.com/crazyannietmi 💜 ^^')
-            await asyncio.sleep(60 * 15)
+            await asyncio.sleep(60 * 1)
             '''if not self.isLive():
                 break'''
             await message.send(
