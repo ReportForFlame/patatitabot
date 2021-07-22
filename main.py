@@ -255,7 +255,7 @@ async def event_ready(self):
         if ctx.author.name.lower() in MODS:
             for command in self.commands:
                 comandos.append(command)
-            await ctx.send('Los comandos del stream son:' + "\n" + seperator.join(commands))
+            await ctx.send('Los comandos del stream son:' + "\n" + seperator.join(comandos))
         else:
             for command in self.commands:
                 if command != 'comandos' and command != 'startstream' and command != 'endstream' and command != 'title' and command != 'game':
